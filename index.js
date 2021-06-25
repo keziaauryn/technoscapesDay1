@@ -6,10 +6,6 @@ app.get('/', (req, res) => {
     res.send('Simple rest api');
 });
 
-app.listen(PORT, () => {
-    console.log("Server running on port " + PORT);
-   });
-
 var Products = require("./product.json");
 
 app.get("/product/listall", (req, res) => {
@@ -21,3 +17,9 @@ app.get("/product/:id", (req, res) => {
         return req.params.id == product.id
     }))  
 });
+
+const server = app.listen(PORT, () => {
+    console.log("Server running on port " + PORT);
+   });
+
+module.exports = server;
